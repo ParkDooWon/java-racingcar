@@ -6,6 +6,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+import org.omg.CORBA.DynAnyPackage.Invalid;
 
 /**
  *   class description
@@ -18,7 +19,8 @@ public class RoundTest {
 	@ValueSource(strings = {"a", "1ka", "1d2"})
 	void validateRoundTest(String round) {
 		assertThatThrownBy(() -> Round.of(round))
-			.isInstanceOf(NumberFormatException.class);
+			.isInstanceOf(InvalidRoundException.class)
+			.hasMessage(InvalidRoundException.INVALID_ROUND);
 	}
 
 	@Test

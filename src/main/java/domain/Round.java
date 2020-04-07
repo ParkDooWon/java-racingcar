@@ -6,7 +6,7 @@ package domain;
  *   @author ParkDooWon
  */
 public class Round {
-	int round;
+	final int round;
 
 	public Round(int round) {
 		this.round = round;
@@ -18,6 +18,10 @@ public class Round {
 	}
 
 	private static void validateNumber(String round) {
-		Integer.parseInt(round);
+		try {
+			Integer.parseInt(round);
+		} catch (NumberFormatException e) {
+			throw new InvalidRoundException(InvalidRoundException.INVALID_ROUND);
+		}
 	}
 }
