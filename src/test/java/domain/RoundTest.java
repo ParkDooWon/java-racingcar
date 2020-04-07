@@ -34,4 +34,11 @@ public class RoundTest {
 	void isInProgressTest(String round, boolean expected) {
 		assertThat(Round.of(round).isInProgress()).isEqualTo(expected);
 	}
+
+	@ParameterizedTest
+	@CsvSource({"1,0", "5,4", "11,10", "100,99"})
+	void reduceRoundTest(String beforeRound, String afterRound) {
+		Round round = Round.of(beforeRound);
+		assertThat(round.reduceRound()).isEqualTo(Round.of(afterRound));
+	}
 }
