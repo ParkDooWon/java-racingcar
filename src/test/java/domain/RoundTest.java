@@ -7,7 +7,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
-import org.omg.CORBA.DynAnyPackage.Invalid;
 
 /**
  *   class description
@@ -36,7 +35,7 @@ public class RoundTest {
 	}
 
 	@ParameterizedTest
-	@CsvSource({"1,0", "5,4", "11,10", "100,99"})
+	@CsvSource({"1,0", "5,4", "11,10", "101,100"})
 	void reduceRoundTest(String beforeRound, String afterRound) {
 		Round round = Round.of(beforeRound);
 		assertThat(round.reduceRound()).isEqualTo(Round.of(afterRound));
