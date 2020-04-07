@@ -20,4 +20,9 @@ public class RoundTest {
 		assertThatThrownBy(() -> Round.of(round))
 			.isInstanceOf(NumberFormatException.class);
 	}
+
+	@Test
+	void constructor_createRoundTest() {
+		assertThat(Round.of("1")).isInstanceOf(Round.class);
+	}
 }

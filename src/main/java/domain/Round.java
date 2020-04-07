@@ -8,9 +8,13 @@ package domain;
 public class Round {
 	int round;
 
+	public Round(int round) {
+		this.round = round;
+	}
+
 	public static Round of(String round) {
 		validateNumber(round);
-		return new Round();
+		return new Round(Integer.parseInt(round));
 	}
 
 	private static void validateNumber(String round) {
