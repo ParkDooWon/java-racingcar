@@ -10,6 +10,8 @@ import java.util.Map;
  */
 public class Position {
 	private static final Map<Integer, Position> cachePosition = new HashMap<>();
+	private static final int INCREASE_POSITION_NUMBER = 1;
+
 	static {
 		for (int i = 0; i <= 100; i++) {
 			cachePosition.put(i, new Position(i));
@@ -24,5 +26,17 @@ public class Position {
 
 	public static Position zero() {
 		return cachePosition.get(0);
+	}
+
+	public static Position of(int position) {
+		return cachePosition.get(position);
+	}
+
+	public Position increase() {
+		int increasedPosition = this.position + INCREASE_POSITION_NUMBER;
+		if (cachePosition.get(increasedPosition) == null) {
+			cachePosition.put(increasedPosition, new Position(increasedPosition));
+		}
+		return cachePosition.get(increasedPosition);
 	}
 }
