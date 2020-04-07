@@ -5,6 +5,7 @@ import static org.assertj.core.api.Assertions.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 import org.omg.CORBA.DynAnyPackage.Invalid;
 
@@ -26,5 +27,11 @@ public class RoundTest {
 	@Test
 	void constructor_createRoundTest() {
 		assertThat(Round.of("1")).isInstanceOf(Round.class);
+	}
+
+	@ParameterizedTest
+	@CsvSource({"0, false", "1, true", "10, true"})
+	void isInProgressTest(String round, boolean expected) {
+		assertThat(Round.of(round).isInProgress()).isEqualTo(expected);
 	}
 }
