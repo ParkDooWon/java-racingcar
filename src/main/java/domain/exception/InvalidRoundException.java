@@ -1,4 +1,4 @@
-package domain;
+package domain.exception;
 
 /**
  *   Round에 대한 커스텀 예외
